@@ -6,16 +6,30 @@
 #         steps: 
 #             - run: echo "${{ github.actor }}"
 
-name: Environment variables
+## コード3.2
+# name: Environment variables
+# on: push
+# jobs:
+#     run:
+#         runs-on: ubuntu-latest
+#         env:
+#             BRANCH: main
+#         steps:
+#             - run: echo "${BRANCH}"
+#             - uses: actions/checkout@v4
+#               with:
+#                 ref: ${{ env.BRANCH }}
+
+## コード3.3
+name: Override environment variables
 on: push
+env: 
+	EXAMPLE: Defined by workflow level
 jobs:
-    run:
-        runs-on: ubuntu-latest
-        env:
-            BRANCH: main
+	print:
+		runs-on: ubuntu-latest
         steps:
-            - run: echo "${BRANCH}"
-            - uses: actions/checkout@v4
-              with:
-                ref: ${{ env.BRANCH }}
-                     
+            - run: echo "${EXAMPLE}"
+			- env:
+				EXAMPLE: Defined by step levle
+			  run: echo "${EXAMPLE}
