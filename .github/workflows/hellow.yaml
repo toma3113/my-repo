@@ -21,16 +21,26 @@
 #                 ref: ${{ env.BRANCH }}
 
 ## コード3.3
-name: Override environment variables
+# name: Override environment variables
+# on: push
+# env:
+#     EXAMPLE: Defined by workflow level
+# jobs:
+#     print:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - run: echo "${EXAMPLE}"
+#             - env:
+#                 EXAMPLE: Defined bt step level
+#               run: echo "${EXAMPLE}"
+
+##　コード3.4
+name: Itermediate environment variables
 on: push
-env:
-    EXAMPLE: Defined by workflow level
-jobs:
+jobs: 
     print:
         runs-on: ubuntu-latest
+        env:
+            ACTOR: ${{ github.actor }}
         steps:
-            - run: echo "${EXAMPLE}"
-            - env:
-                EXAMPLE: Defined bt step level
-              run: echo "${EXAMPLE}"
-
+            - run:echo "${ACTIR}"
