@@ -1,0 +1,8 @@
+name: Hello
+on: push
+jobs:
+    hellow:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echp "Hello, world"
+            - uses: actions/checkput@v4
