@@ -43,4 +43,4 @@ jobs:
         env:
             ACTOR: ${{ github.actor }}
         steps:
-            - run:echo "${ACTIR}"
+            - run:echo "${ACTOR}"
