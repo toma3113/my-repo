@@ -57,13 +57,27 @@
 #             - run: echo "${USERNAME}"
 
 ## コード3.6
-name: Secrets
+# name: Secrets
+# on: push
+# jobs:
+#     print:
+#         runs-on: ubuntu-latest
+#         env:
+#             PASSWORD: ${{secrets.PASSWORD}}
+#         steps:
+#             - run: echo "${PASSWORD}"
+#             - run: echo "${PASSWORD:0:1} ${PASSWORD#?}"
+
+## コード 3.7
+name: Literals
 on: push
 jobs:
     print:
         runs-on: ubuntu-latest
+        steps: printenv | grep 'LITERAL_'
         env:
-            PASSWORD: ${{secrets.PASSWORD}}
-        steps:
-            - run: echo "${PASSWORD}"
-            - run: echo "${PASSWORD:0:1} ${PASSWORD#?}"
+            LITERAL_NULL: ${{ null }}
+            LITERAL_BOOLEAN: ${{ true }}
+            LITERAL_NUMBER: ${{ 12345 }}
+            LITERAL_STRING: ${{ 'Hello' }}
+            LITERAL_OMIT_STRING: World
