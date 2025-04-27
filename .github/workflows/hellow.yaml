@@ -35,12 +35,23 @@
 #               run: echo "${EXAMPLE}"
 
 ##　コード3.4
-name: Itermediate environment variables
+# name: Itermediate environment variables
+# on: push
+# jobs: 
+#     print:
+#         runs-on: ubuntu-latest
+#         env:
+#             ACTOR: ${{ github.actor }}
+#         steps:
+#             - run: echo "${ACTOR}"]
+
+## コード3.5
+name: Variables
 on: push
-jobs: 
+jobs:
     print:
         runs-on: ubuntu-latest
         env:
-            ACTOR: ${{ github.actor }}
-        steps:
-            - run: echo "${ACTOR}"
+            USERNAME: ${{ var.USERNAME }}
+        step:
+            - run: echo "${USERNAME}"
