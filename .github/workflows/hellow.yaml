@@ -182,11 +182,14 @@
 name: GITHUB_ENV
 on: push
 jobs:
-    share:
-        runs-on: ubuntu-latest
-        steps:
-          - run: echo "RESULT=Hello" >> "${GITHUB_ENV}"
-          - run: echo "${RESULT}"
-
-
+  commit:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write 
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - run: gh pr commit "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
