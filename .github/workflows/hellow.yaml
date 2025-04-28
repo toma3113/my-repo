@@ -110,12 +110,24 @@
 #                 JOIN_FUNC: ${{ join(github.event.*.html_url, ',')}}
 
 ##コード 3.10
-name: JSON function
+# name: JSON function
+# on: push
+# jobs:
+#     dump:
+#         runs-on: ubuntu-latest
+#         steps: 
+#             - run: echo "${CONTEXT}"
+#               env:
+#                 CONTEXT: ${{ toJSON(github) }}
+
+##コード 3.11
+name: Hash function
 on: push
 jobs:
-    dump:
+    hash:
         runs-on: ubuntu-latest
-        steps: 
-            - run: echo "${CONTEXT}"
+        steps:
+            - use: actions/checkout@v4 
+            - run: echo "${HASH}"
               env:
-                CONTEXT: ${{ toJSON(github) }}
+                HASH: ${{ hashFile('.github/workflows/*.yaml') }}
