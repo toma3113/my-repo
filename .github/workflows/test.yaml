@@ -39,13 +39,25 @@
 #       - run: echo "::debug::This is degug log"
 
 ##コード5.2
-name: Bash tracing
+# name: Bash tracing
+# on: push
+# jobs:
+#   log:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: |
+#          set -x
+#          date
+#          hostname
+
+##コード5.3
+name: Log group
 on: push
 jobs:
-  log:
+	log: 
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - run: |
-         set -x
-         date
-         hostname
+          echo "::group:Show environment variables"
+          printenv
+          echo "::endgroup::"
