@@ -163,6 +163,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [before]
     steps:
-      -env:
+      - env:
         RESULT: ${{ needs.before.outputs.result }}
       run: echo "${RESULT}"
