@@ -133,11 +133,22 @@
 #                 HASH: ${{ hashFiles('.github/workflows/*.yaml') }}
 
 #コード 3.12
+# name: Conditions
+# on: push
+# jobs:
+#     skip-or-run:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - run: echo "Hello"
+#               if: ${{ contains(github.run_id, '1') }}
+
+#コード 3.12
 name: Conditions
 on: push
 jobs:
-    skip-or-run:
+    fail:
         runs-on: ubuntu-latest
         steps:
+            - run: exit 1
             - run: echo "Hello"
-              if: ${{ contains(github.run_id, '1') }}
+              if: ${{ failure() }}
