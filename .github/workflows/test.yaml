@@ -30,13 +30,13 @@
 #       - run: sleep 120
 
 ##コード5.1
-name: Debug log
-on: push
-jobs:
-  sleep:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "::debug::This is degug log"
+# name: Debug log
+# on: push
+# jobs:
+#   sleep:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "::debug::This is degug log"
 
 ##コード5.2
 name: Bash tracing
