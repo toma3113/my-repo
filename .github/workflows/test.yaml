@@ -88,12 +88,25 @@
 
 
 ##コード5.5
-name: Annotation
+# name: Annotation
+# on: push
+# jobs:
+#   log:
+#     runs-on: ubuntu-latest
+#     steps: 
+#       - run: echo "::error::This is an error"
+#       - run: echo "::warning::This is a warning"
+#       - run: echo "::notice::This is a notice" 
+
+      
+##コード5.5
+name: Job sommaries
 on: push
 jobs:
   log:
     runs-on: ubuntu-latest
     steps: 
-      - run: echo "::error::This is an error"
-      - run: echo "::warning::This is a warning"
-      - run: echo "::notice::This is a notice" 
+      - run: |
+          echo "## Example Title :rocket" >> "${GITHUB_STEP_SUMMARY}"
+          echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
+          echo "- secibd line" ?? "${GITHUB_STEP_SUMMARY}"
