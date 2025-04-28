@@ -100,13 +100,30 @@
 
       
 ##コード5.5
-name: Job sommaries
+# name: Job sommaries
+# on: push
+# jobs:
+#   log:
+#     runs-on: ubuntu-latest
+#     steps: 
+#       - run: |
+#           echo "## Example Title :rocket" >> "${GITHUB_STEP_SUMMARY}"
+#           echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
+#           echo "- second line" >> "${GITHUB_STEP_SUMMARY}"
+
+##コード5.7
+name: Parallel jobs
 on: push
 jobs:
-  log:
+  first:
     runs-on: ubuntu-latest
-    steps: 
-      - run: |
-          echo "## Example Title :rocket" >> "${GITHUB_STEP_SUMMARY}"
-          echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
-          echo "- second line" >> "${GITHUB_STEP_SUMMARY}"
+    steps:
+      - run: sleep 10 && echo "first job"
+  second:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 10 && echo "second job"
+  third:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 10 && echo "third job"
