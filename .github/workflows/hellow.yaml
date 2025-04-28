@@ -142,13 +142,23 @@
 #             - run: echo "Hello"
 #               if: ${{ contains(github.run_id, '1') }}
 
-#コード 3.12
-name: Conditions
+#コード 3.13
+# name: Staus check function
+# on: push
+# jobs:
+#     fail:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - run: exit 1
+#             - run: echo "Hello"
+#               if: ${{ failure() }}
+
+#コード 3.14
+name: Conditions workflow
 on: push
 jobs:
-    fail:
+    skip-or-run:
+        if: ${{ fithub.actor == 'octocat' }}
         runs-on: ubuntu-latest
         steps:
-            - run: exit 1
             - run: echo "Hello"
-              if: ${{ failure() }}
