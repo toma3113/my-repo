@@ -18,13 +18,22 @@
 #           docker run --rm -v "${pwd}:${pwd}" -w "$(pwd)" rhysd/actionlint:latest
 
 ##コード4.9
-name: Auto_cancel
-on: pull_request
-concurrency: 
-   group: ${{ github.workflow }}-${{ github.ref }}
-   cancel-in-progress: true
+# name: Auto_cancel
+# on: pull_request
+# concurrency: 
+#    group: ${{ github.workflow }}-${{ github.ref }}
+#    cancel-in-progress: true
+# jobs:
+#   sleep:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: sleep 120
+
+##コード5.1
+name: Debug log
+on: push
 jobs:
   sleep:
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 120
+      - run: echo "::debug::This is degug log"
