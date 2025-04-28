@@ -179,8 +179,8 @@
 
 
 #コード 3.18
-name: GITHUB_ENV
-on: push
+name: Comment
+on: pull_request
 jobs:
   commit:
     runs-on: ubuntu-latest
