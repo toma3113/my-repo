@@ -54,7 +54,7 @@
 name: Log group
 on: push
 jobs:
-	log:
+  log:
     runs-on: ubuntu-latest
     steps: 
       - run: |
