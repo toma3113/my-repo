@@ -130,4 +130,4 @@ jobs:
             - use: actions/checkout@v4 
             - run: echo "${HASH}"
               env:
-                HASH: ${{ hashFile('.github/workflows/*.yaml') }}
+                HASH: ${{ hashFiles('.github/workflows/*.yaml') }}
