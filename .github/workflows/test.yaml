@@ -51,13 +51,25 @@
 #          hostname
 
 ##コード5.3
-name: Log group
+# name: Log group
+# on: push
+# jobs:
+#   log:
+#     runs-on: ubuntu-latest
+#     steps: 
+#       - run: |
+#           echo "::group:Show environment variables"
+#           printenv
+#           echo "::endgroup::"
+
+##コード5.4
+name: Add mask
 on: push
 jobs:
   log:
     runs-on: ubuntu-latest
+    env:
+      PASSWORD: SuperSeretValue
     steps: 
-      - run: |
-          echo "::group:Show environment variables"
-          printenv
-          echo "::endgroup::"
+      - run: echo "::add-mask::&{PASSWORD}"
+      - run: echo "${PASSWORD}" 
