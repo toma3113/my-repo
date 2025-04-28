@@ -197,7 +197,7 @@
 name: Test
 on: 
   pull_request:
-    paths:['go/**/*.go']
+    paths: ['go/**/*.go']
 jobs:
   test:
     runs-on: ubuntu-latest
