@@ -106,5 +106,5 @@ jobs:
         steps: 
             - run: printenv | grep '_FUNC'
               env:
-                FORMAT_FUNC: ${{ format('{0}','{1}', 'Hi', 'world')}}
-                JOIN_FUNC: ${{ join(github.envent.*.html_url, ',')}}
+                FORMAT_FUNC: ${{ format('{0},{1}', 'Hi', 'world')}}
+                JOIN_FUNC: ${{ join(github.event.*.html_url, ',')}}
