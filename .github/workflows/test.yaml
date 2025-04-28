@@ -37,3 +37,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "::debug::This is degug log"
+
+##コード5.2
+name: Bash tracing
+on: push
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+         set -x
+         data
+         hostname
