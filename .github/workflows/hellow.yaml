@@ -185,8 +185,8 @@ jobs:
     share:
         runs-on: ubuntu-latest
         steps:
-            run: echo "RESULT=Hello" >> "${GITHUB_ENV}"
-            run: echo "${RESULT}"
+          - run: echo "RESULT=Hello" >> "${GITHUB_ENV}"
+          - run: echo "${RESULT}"
 
 
 
