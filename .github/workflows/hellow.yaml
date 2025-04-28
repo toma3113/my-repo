@@ -154,11 +154,28 @@
 #               if: ${{ failure() }}
 
 #コード 3.14
-name: Conditions workflow
+# name: Conditions workflow
+# on: push
+# jobs:
+#     skip-or-run:
+#         if: ${{ github.actor == 'octocat' }}
+#         runs-on: ubuntu-latest
+#         steps:
+#             - run: echo "Hello"
+
+
+#コード 3.14
+name: GITHUB_OUTPUT
 on: push
 jobs:
-    skip-or-run:
-        if: ${{ github.actor == 'octocat' }}
+    share:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "Hello"
+          - id: source
+            run: echo "result=Hello" >> "${GITHUB_OUTPUT}"
+          - env:
+              RESULT: ${{ steps.source.outputs.result }}
+            run: echo "${{ RESULT }}"
+
+
+
