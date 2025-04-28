@@ -63,13 +63,37 @@
 #           echo "::endgroup::"
 
 ##コード5.4
-name: Add mask
+# name: Add mask
+# on: push
+# jobs:
+#   log:
+#     runs-on: ubuntu-latest
+#     env:
+#       PASSWORD: SuperSeretValue
+#     steps: 
+#       - run: echo "::add-mask::&{PASSWORD}"
+#       - run: echo "${PASSWORD}" 
+
+##コード5.5
+# name: Add mask
+# on: push
+# jobs:
+#   log:
+#     runs-on: ubuntu-latest
+#     env:
+#       PASSWORD: SuperSeretValue
+#     steps: 
+#       - run: echo "::add-mask::&{PASSWORD}"
+#       - run: echo "${PASSWORD}" 
+
+
+##コード5.5
+name: Annotation
 on: push
 jobs:
   log:
     runs-on: ubuntu-latest
-    env:
-      PASSWORD: SuperSeretValue
     steps: 
-      - run: echo "::add-mask::&{PASSWORD}"
-      - run: echo "${PASSWORD}" 
+      - run: echo "::error::This is an error"
+      - run: echo "::warning::This is a warning"
+      - run: echo "::notice::This is a notice" 
