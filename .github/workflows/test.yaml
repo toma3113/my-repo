@@ -18,9 +18,11 @@
 #           docker run --rm -v "${pwd}:${pwd}" -w "$(pwd)" rhysd/actionlint:latest
 
 ##コード4.9
-name: Concurrency
-on: push
-concurrency: ${{ github.workflow }}
+name: Auto_cancel
+on: pull_request
+concurrency: 
+   group: ${{ github.workflow }}-${{ github.ref }}
+   cancel-in-progress: true
 jobs:
   sleep:
     runs-on: ubuntu-latest
