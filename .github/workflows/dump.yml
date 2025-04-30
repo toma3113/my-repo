@@ -1,5 +1,6 @@
 ##コード6.2
 name: Dump
+on: push
 jobs:
   debug:
     runs-on: ubuntu-latest
