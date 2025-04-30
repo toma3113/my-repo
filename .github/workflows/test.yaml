@@ -181,18 +181,36 @@
 #         shell: bash
 
 #コード5.11
-name: Multi-dimesnton matrix
+# name: Multi-dimesnton matrix
+# on: push
+# jobs:
+#   print:
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest, macos-latest]
+#         version: [18, 20]
+#     runs-on: ${{ matrix.os }}
+#     steps:
+#       - uses: actions/setup-node@v4
+#         with: 
+#           node-version: ${{ matrix.vesion }}
+#       - run: echo "${RUNNER_OS}" && node --version
+
+#コード5.12
+name: Multi matrix
 on: push
 jobs:
   print:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
-        version: [18, 20]
+        include:
+          - os: ubuntu-latest
+            version: 20
+          - os: macos-latest
+            version: 18
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-node@v4
         with: 
           node-version: ${{ matrix.vesion }}
       - run: echo "${RUNNER_OS}" && node --version
-
