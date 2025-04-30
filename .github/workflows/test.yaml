@@ -219,7 +219,7 @@
 ##コード5.13
 name: Environments
 on:
-  workflow_dispatc:
+  workflow_dispatch:
     inputs:
       environment-name:
         type: environment
