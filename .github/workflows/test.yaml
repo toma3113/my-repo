@@ -167,15 +167,32 @@
 #           RESULT: ${{ needs.before.outputs.result }}
 #         run: echo "${RESULT}"
 
-##コード5.10
-name: Matrix
+# ##コード5.10
+# name: Matrix
+# on: push
+# jobs:
+#   print:
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest, windows-latest, macos-latest]
+#     runs-on: ${{ matrix.os }}
+#     steps:
+#       - run: echo "${RUNNER_OS}"
+#         shell: bash
+
+#コード5.11
+name: Multi-dimesnton matrix
 on: push
 jobs:
   print:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
+        version: [18, 20]
     runs-on: ${{ matrix.os }}
     steps:
-      - run: echo "${RUNNER_OS}"
-        shell: bash
+      - uses: actions/stepup-node@v4
+        with: 
+          node-version: ${{ matrix.vesion }}
+      - run: echo "${RUNNER_OS}" && node --version
+
