@@ -2,7 +2,8 @@ name: Release
 on:
   push:
     tags:
-      - 'v[0-9] + .[0-9]+.[0-9]+'
+     - 'v[0-9]+\.[0-9]+\.[0-9]+'
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -20,6 +21,6 @@ jobs:
             -o "${RUNNER_TEMP}/example" go/example/main.go
       - run: |
           gh release create "${VERSION}" --title "${VERSION}" --generate-notes
-          gh release uplpad "${VERSION}" "${RUNNER_TEMP}/exmaple"
+          gh release upload "${VERSION}" "${RUNNER_TEMP}/example"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
