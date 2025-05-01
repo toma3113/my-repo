@@ -1,11 +1,8 @@
 package main
+import "fmt"
+
+ver version string
+
 func EvenOrOdd(number int) string{
-
-
-	
-	if number%2 == 0{
-		return "even"
-	} else {
-		return "odd"
-	}
+	fmt.Printf("Example %s\n, verison")
 }
