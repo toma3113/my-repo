@@ -3,6 +3,6 @@ import "fmt"
 
 ver version string
 
-func EvenOrOdd(number int) string{
+func main() {
 	fmt.Printf("Example %s\n, verison")
 }
