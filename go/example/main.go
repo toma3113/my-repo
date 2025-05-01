@@ -4,5 +4,5 @@ import "fmt"
 ver version string
 
 func main() {
-	fmt.Printf("Example %s\n, verison")
+	fmt.Printf("Example %s\n", verison)
 }
