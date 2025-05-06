@@ -1,25 +1,19 @@
-name: Release
-on:
-  push:
-    tags:
-      - 'v[0-9]+\.[0-9]+\.[0-9]+'
-jobs:
-  release:
+name: OpenD Connect
+on: push
+env:
+  ROLE_ARN: arn::aws:iam::${{ secrets.AWS_ID }}::role/${{ secrets.ROLE_NAME }}
+  SESSION_NAME: gh-oicd-${{ github.run_id }}-${{ github.run_attemot }}
+job:
+  connect:
     runs-on: ubuntu-latest
-    env:
-      VERSION: ${{ github.ref_name }}
     permissions:
-      contents: write
+      id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
-          go-version: '1.22'
-      - run: |
-          go build -ldflags "-X main.version=${VERSION}" \
-            -o "${RUNNER_TEMP}/example" go/example/main.go
-      - run: |
-          gh release create "${VERSION}" --title "${VERSION}" --generate-notes
-          gh release upload "${VERSION}" "${RUNNER_TEMP}/example"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          role-toassume: ${{ env.ROLE_ARN }}
+          role-session-name: ${{ env.SEDDION_NAME }}
+          aws-region: ap-northeast-1
+      - run: aws iam list-users
+      - run: aws iam create-user --user-name invalid || true
+      
